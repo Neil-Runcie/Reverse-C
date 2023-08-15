@@ -9,15 +9,16 @@ project(Reverse-C
 
 include(ExternalProject)
 
+file(MAKE_DIRECTORY src/NDR_LAP)
+
 ExternalProject_Add(ndr_lap
 GIT_REPOSITORY https://github.com/Neil-Runcie/NDR_LAP.git
-CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_SOURCE_DIR}/src/NDR_LAP
+SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/NDR_LAP
 )
 
 ADD_EXECUTABLE(reverse-c src/main.c)
 
 target_link_libraries(reverse-c ${CMAKE_SOURCE_DIR}/src/NDR_LAP/lib/libndr_lap.a)
-
 
 install (TARGETS reverse-c
          ARCHIVE DESTINATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
