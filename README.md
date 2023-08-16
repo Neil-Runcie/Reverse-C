@@ -1,4 +1,4 @@
-# NDR Lexer and Parser (NDR_LAP)
+# Reverse-C programming language
 
 ## Purpose
 Reverse-C is parody "programming language" made as a simple yet comical demonstration of the NDR Lexer and Parser Utility. 
