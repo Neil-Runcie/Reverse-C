@@ -11,6 +11,7 @@ With that being said, Reverse-C does effectively demonstrate the functionality p
 The project is set up to be built using cmake. After running cmake and make commands to build the project, the "reverse-c" executable will be present for use with a code file
 
 Running the reverse-c transpiler from the command line can be done by passing the text file containing the code as the first parameter to the application such as "./reverse-c code.txt" on linux for example
+When command runs successfully, then a new file called "CFile.c" will be produced that can be compiled using most popular C compilers
 
 ## Documentation
 For  documentation of the Reverse-C language, open the instruction.html page in your browser
