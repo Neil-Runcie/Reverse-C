@@ -602,7 +602,7 @@ int EqualThenJumpWithVariables(NDR_ASTNode* node){
     }
 
     if(FindInLabelTable(operand->token) == -1){
-        printf("Could not find label \"%s\" to jump to for instruction \"00000111\" on line %u, column %u", operand->token, operand->lineNumber, operand->columnNumber);
+        printf("Could not find label \"%s\" to jump to for instruction \"00000111\" on line %u, column %u", operand->token, (unsigned int) operand->lineNumber, (unsigned int) operand->columnNumber);
         return -1;
     }
 
@@ -655,7 +655,7 @@ int GreaterThenJumpWithVariables(NDR_ASTNode* node){
     }
 
     if(FindInLabelTable(operand->token) == -1){
-        printf("Could not find label \"%s\" to jump to for instruction \"00001000\" on line %u, column %u", operand->token, operand->lineNumber, operand->columnNumber);
+        printf("Could not find label \"%s\" to jump to for instruction \"00001000\" on line %u, column %u", operand->token, (unsigned int) operand->lineNumber, (unsigned int) operand->columnNumber);
         return -1;
     }
 
@@ -708,7 +708,7 @@ int LesserThenJumpWithVariables(NDR_ASTNode* node){
     }
 
     if(FindInLabelTable(operand->token) == -1){
-        printf("Could not find label \"%s\" to jump to for instruction \"00001001\" on line %u, column %u", operand->token, operand->lineNumber, operand->columnNumber);
+        printf("Could not find label \"%s\" to jump to for instruction \"00001001\" on line %u, column %u", operand->token, (unsigned int) operand->lineNumber, (unsigned int) operand->columnNumber);
         return -1;
     }
 
@@ -1040,7 +1040,7 @@ void AllocateVariableMemory(){
         strcat(holder, varTable[x].varName);
         strcat(holder, " = ");
         strcat(holder, "malloc(sizeof(int) * ");
-        sprintf(memoryAmount, "%u", varTable[x].memoryNeeded);
+        sprintf(memoryAmount, "%u", (unsigned int) varTable[x].memoryNeeded);
         strcat(holder, memoryAmount);
         strcat(holder, ");\n");
 
