@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="NDR Lexer and Parser Documentation">
+    <meta name="author" content="Neil Runcie"> 
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="instructionstyle.css" >
+
+
+</head>
+<body>
+    <div style="width: 70%; margin: auto">
+        <div class="tab">
+          <button class="tabs" onclick="MainDoc()">Reverse-C</button>
+          <button class="tabs" onclick="LicenseDoc()">License</button>
+        </div>
+        <div id="mainDiv" style="display: block;">
+            <br>
+            <h2>Reverse-C Programming Language</h2>
+ 
+            <br>
+            <h4>1. Using the Reverse-C Transpiler</h4>
+            <hr>
+            The Reverse-C Transpiler is a comical language that takes 0s and 1s in multiples of 8 while disregarding white space and newlines to produce code. The intent is to create a programs that looks like binary and produces C functional C code in a file called CFile.c.
+            <br><br>
+            The Reverse-C Transpiler recognizes 17 instructions<br>
+            Each instruction uses either a variable, a number, or a label as operands.
+            <hr>
+            <ul>
+            <li><pre>variable - this corresponds to a memory location that can be used to hold a value</pre></li>
+            <li><pre>number - this corresponds to any unsigned number that can be represented as an eight digit binary number</pre></li>
+            <li><pre>label - this corresponds to a memory location that can be referenced corresponding to some instruction</pre></li>
+            </ul>
+            <hr>
+            Each operand used within an instruction is either a source (src) or destination (dest)
+            <hr>
+            <ul>
+            <li><pre>dest - this corresponds to a memory location where data is stored</pre></li>
+            <li><pre>src - this corresponds to a memory location where data is retrieved</pre></li>
+            </ul>
+            <hr>
+            Below are all of the defined instructions with descriptions
+            <hr>
+            <ul>
+            <li><pre>Set value - Place any byte sized number into the dest memory location
+instruction	dest - variable    src - number
+00000001 	00000001	   00000010
+</pre></li>
+            <li><pre>Move value - Change the memory location of the reference by a byte amount
+instruction	dest - variable    src - number
+00000010 	00000001	   00000010
+</pre></li>
+            <li><pre>Set value using variable - Place the contents of the src location into the dest memory location
+instruction	dest - variable    src - variable
+00000011 	00000001	   00000010
+</pre></li>
+            <li><pre>Is variable equal to another variable - Check if the two src variable contents are equal and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00000100 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Is variable greater than another variable - Check if src1 variable contents are greater than src2 and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00000101 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Is variable lesser than another variable - Check if src1 variable contents are lesser than src2 and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00000110 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Is equal then jump - If the two src variable contents are equal then jump to the specified label
+instruction	src1 - variable    src2 - variable	label
+00000111 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Is greater then jump - if src1 variable contents are greater than src2 then jump to the specified label
+instruction	src1 - variable    src2 - variable	label
+00001000 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Is lesser then jump - if src1 variable contents are lesser than src2 then jump to the specified label
+instruction	src1 - variable    src2 - variable	label
+00001001 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Add variables - Add src1 variable contents to src2 contents and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00001010 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Subtract variables  - Subtract src2 variable contents from src1 contents and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00001011 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>And variables - Perform a logical "and" operation on src1 variable contents and src2 contents and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00001100 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Or variables - Perform a logical "or" operation on src1 variable contents and src2 contents and place the result in the dest variable
+instruction	dest - variable    src1 - variable	src2 - variable
+00001101 	00000001	   00000010	        00000100
+</pre></li>
+            <li><pre>Set label - Set a label that can be used a memory reference for jump instructions
+instruction	label
+00001110 	00000001
+</pre></li>
+            <li><pre>Jump to label - Jump to any already set label
+instruction	label
+00001111 	00000001
+</pre></li>
+            <li><pre>print number - print the contents of a memory location interpreted as a number
+instruction	src - variable
+00010000 	00000001
+</pre></li>
+            <li><pre>print char - print the contents of a memory location interpreted as a character
+instruction	src - variable
+00010001 	00000001
+</pre></li>
+            </ul>
+            <hr>
+            Other than the items described above, the Reverse-C transpiler recongizes C style single line comments to make coding (slightly if at all) more tolerable in this language.<br>
+            With that, all of the code supported by the Reverse-C transpiler has been described.
+            <br><br>
+            Note: While Reverse-C does handle the allocation and deallocation of memory for the user, it does not guarantee that all memory interactions are safe or logically meaningful.
+            Ensuring program correctness and safety largely lies with the user as this project is not intended to produce robust programmatic solutions.
+            <br><br>
+            Below is a demonstration of a program that prints hello world.
+            <br><br><br><h4>3. Example Program</h4>
+            <hr>
+            <pre>
+// Print "HELLO WORLD"
+00000001 00000001 01001000
+00000001 00000010 01000101
+00000001 00000011 01001100
+00000001 00000100 01001100
+00000001 00000101 01001111
+00000001 00000110 00100000
+00000001 00000111 01010111
+00000001 00001000 01001111
+00000001 00001001 01010010
+00000001 00001010 01001100
+00000001 00001011 01000100
+00000001 00001100 00001010
+00010001 00000001
+00010001 00000010
+00010001 00000011
+00010001 00000100
+00010001 00000101
+00010001 00000110
+00010001 00000111
+00010001 00001000
+00010001 00001001
+00010001 00001010
+00010001 00001011
+00010001 00001100
+</pre>
+<hr>
+Which is equivalent to (Spacing does not matter)
+<hr>
+<pre>
+// Print "HELLO WORLD"
+00000001000000010100100000000001
+00000010010001010000000100000011
+01001100000000010000010001001100
+00000001000001010100111100000001
+00000110001000000000000100000111
+01010111000000010000100001001111
+00000001000010010101001000000001
+00001010010011000000000100001011
+01000100000000010000110000001010
+00010001000000010001000100000010
+00010001000000110001000100000100
+00010001000001010001000100000110
+00010001000001110001000100001000
+00010001000010010001000100001010
+00010001000010110001000100001100
+</pre>            
+
+        </div>
+            
+        <div id="licenseDiv" style="display: none;">
+            <br>
+            <h2>Reverse-C License</h2>
+ 
+            <br>
+            <pre>BSD 3-Clause License
+
+Copyright (c) 2023, Neil Runcie
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</pre>
+        </div>
+    </div>
+
+  <script>
+      function MainDoc(){
+          var mainContent = document.getElementById("mainDiv");
+          mainContent.style.display = "block";
+          var licenseContent = document.getElementById("licenseDiv");
+          licenseContent.style.display = "none";
+      }
+      function LicenseDoc(){
+          var mainContent = document.getElementById("mainDiv");
+          mainContent.style.display = "none";
+          var licenseContent = document.getElementById("licenseDiv");
+          licenseContent.style.display = "block";
+      }
+  </script>
+    
+</body>
