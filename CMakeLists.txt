@@ -16,7 +16,7 @@ GIT_REPOSITORY https://github.com/Neil-Runcie/NDR_LAP.git
 SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/NDR_LAP
 )
 
-ADD_EXECUTABLE(reverse-c src/main.c)
+ADD_EXECUTABLE(reverse-c src/reverse.c)
 
 target_link_libraries(reverse-c ${CMAKE_SOURCE_DIR}/src/NDR_LAP/lib/libndr_lap.a)
 
