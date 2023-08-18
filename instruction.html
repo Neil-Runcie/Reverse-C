@@ -117,13 +117,17 @@ instruction	src - variable
 </pre></li>
             </ul>
             <hr>
-            While Reverse-C does handle the allocation and deallocation of memory for the user, it does not guarantee that all memory interactions are safe or logically meaningful.
+            Other than the items described above, the Reverse-C transpiler recongizes C style single line comments to make coding (slightly if at all) more tolerable in this language.<br>
+            With that, all of the code supported by the Reverse-C transpiler has been described.
+            <br><br>
+            Note: While Reverse-C does handle the allocation and deallocation of memory for the user, it does not guarantee that all memory interactions are safe or logically meaningful.
             Ensuring program correctness and safety largely lies with the user as this project is not intended to produce robust programmatic solutions.
-            <br>
+            <br><br>
             Below is a demonstration of a program that prints hello world.
             <br><br><br><h4>3. Example Program</h4>
             <hr>
             <pre>
+// Print "HELLO WORLD"
 00000001 00000001 01001000
 00000001 00000010 01000101
 00000001 00000011 01001100
@@ -150,9 +154,10 @@ instruction	src - variable
 00010001 00001100
 </pre>
 <hr>
-Which is equivalent to
+Which is equivalent to (Spacing does not matter)
 <hr>
 <pre>
+// Print "HELLO WORLD"
 00000001000000010100100000000001
 00000010010001010000000100000011
 01001100000000010000010001001100
